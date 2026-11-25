@@ -1,0 +1,9 @@
+.env
+*.log
+firebase-service-account.json
+*firebase-adminsdk*.json
+.DS_Store
+.firebase/
+node_modules/
+functions/node_modules/
+Source/*.zip

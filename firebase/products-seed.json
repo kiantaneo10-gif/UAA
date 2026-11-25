@@ -1,0 +1,62 @@
+{
+  "uaa-splatter": {
+    "sortOrder": 1,
+    "name": "Unique Arts Splatter Jersey",
+    "price": 1,
+    "category": "graphic",
+    "status": "new",
+    "stockStatus": "in_stock",
+    "image": "img/products/uaa-1.jpg",
+    "description": "Maroon and cream splatter jersey with vertical UNIQUE lettering. Lightweight, breathable, and made for Unique Arts Apparel."
+  },
+  "uaa-fade": {
+    "sortOrder": 2,
+    "name": "Unique Arts Fade Jersey",
+    "price": 1,
+    "category": "graphic",
+    "status": "popular",
+    "stockStatus": "in_stock",
+    "image": "img/products/uaa-2.jpg",
+    "description": "Red, white, and blue fade jersey with bold UNIQUE branding across the chest."
+  },
+  "uaa-forest": {
+    "sortOrder": 3,
+    "name": "Unique Arts Forest Jersey",
+    "price": 1,
+    "category": "classic",
+    "status": "",
+    "stockStatus": "in_stock",
+    "image": "img/products/uaa-3.jpg",
+    "description": "Forest green to white gradient jersey with UNIQUE lettering and a clean athletic cut."
+  },
+  "uaa-mesh": {
+    "sortOrder": 4,
+    "name": "Unique Arts Mesh Jersey",
+    "price": 1,
+    "category": "classic",
+    "status": "sale",
+    "stockStatus": "in_stock",
+    "image": "img/products/uaa-4.jpg",
+    "description": "White mesh jersey with ruffled trim and Unique Arts Apparel detailing."
+  },
+  "uaa-palms": {
+    "sortOrder": 5,
+    "name": "Unique Arts Palms Jersey",
+    "price": 1,
+    "category": "graphic",
+    "status": "new",
+    "stockStatus": "in_stock",
+    "image": "img/products/uaa-5.jpg",
+    "description": "Royal blue palm-print jersey with oversized UNIQUE type for a standout court look."
+  },
+  "uaa-sunset": {
+    "sortOrder": 6,
+    "name": "Unique Arts Sunset Jersey",
+    "price": 1,
+    "category": "graphic",
+    "status": "popular",
+    "stockStatus": "in_stock",
+    "image": "img/products/uaa-6.jpg",
+    "description": "Sunset yellow and orange geometric jersey with Unique Arts Apparel branding."
+  }
+}

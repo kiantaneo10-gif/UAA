@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Arts Apparel | Admin</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <header class="admin-site-header">
+        <div class="container-fluid">
+            <a class="admin-brand" href="index.html">Unique Arts Apparel</a>
+            <nav aria-label="Admin navigation">
+                <a href="categories.html">Shop</a>
+                <a href="shopping-cart.html">Cart <span class="cart-count">0</span></a>
+                <div class="user-access" data-auth-nav>
+                    <a href="login.html">Sign in</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-dashboard container">
+        <div class="admin-page-heading">
+            <div>
+                <p class="admin-eyebrow">Store management</p>
+                <h1>Admin dashboard</h1>
+            </div>
+            <a href="categories.html" class="admin-store-link">View storefront</a>
+        </div>
+        <p id="admin-message" class="admin-message" role="status">Checking administrator access…</p>
+
+        <div id="admin-content" hidden>
+            <div class="admin-tabs" role="tablist" aria-label="Dashboard sections">
+                <button type="button" class="is-active" data-admin-tab="sales">Sales</button>
+                <button type="button" data-admin-tab="reports">Sales analytics</button>
+                <button type="button" data-admin-tab="products">Products</button>
+                <button type="button" data-admin-tab="users">User management</button>
+            </div>
+
+            <section class="admin-panel" data-admin-panel="sales">
+                <h2>Sales and orders</h2>
+                <p class="admin-note">New orders use Cash on Delivery and remain pending until an administrator updates payment and fulfillment status. Revenue reflects paid, non-cancelled orders; product costs are not tracked, so profit is not shown.</p>
+                <div class="admin-stats">
+                    <article><span>Paid gross revenue</span><strong id="admin-paid-revenue">₱0.00</strong></article>
+                    <article><span>Pending amount</span><strong id="admin-pending-total">₱0.00</strong></article>
+                    <article><span>Paid orders</span><strong id="admin-paid-orders">0</strong></article>
+                    <article><span>All orders</span><strong id="admin-order-count">0</strong></article>
+                    <article><span>Customers</span><strong id="admin-customer-count">0</strong></article>
+                    <article><span>Products</span><strong id="admin-product-count">0</strong></article>
+                    <article><span>Available products</span><strong id="admin-available-product-count">0</strong></article>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Fulfillment</th>
+                                <th>Date</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-body">
+                            <tr><td colspan="8">Loading orders…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-panel" data-admin-panel="reports" hidden>
+                <div class="admin-panel-heading">
+                    <div>
+                        <h2>Sales analytics</h2>
+                        <p class="admin-note">Filter orders by their creation date. The end date is inclusive.</p>
+                    </div>
+                    <button type="button" class="admin-button admin-button-secondary" id="admin-export-report" disabled>Export CSV</button>
+                </div>
+                <form id="admin-report-form" class="admin-report-filters">
+                    <label>From
+                        <input type="date" name="from">
+                    </label>
+                    <label>Through
+                        <input type="date" name="to">
+                    </label>
+                    <button type="submit" class="admin-button">Apply filters</button>
+                </form>
+                <div class="admin-stats admin-report-summary">
+                    <article><span>Orders</span><strong id="admin-report-order-count">0</strong></article>
+                    <article><span>Order value (excl. cancelled)</span><strong id="admin-report-order-value">₱0.00</strong></article>
+                    <article><span>Paid gross revenue</span><strong id="admin-report-paid-revenue">₱0.00</strong></article>
+                    <article><span>Pending amount</span><strong id="admin-report-pending-total">₱0.00</strong></article>
+                </div>
+                <p id="admin-report-cancelled-count" class="admin-note">Cancelled orders: 0</p>
+                <div class="admin-table-wrap">
+                    <table class="table admin-table admin-report-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Subtotal</th>
+                                <th>Discount</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Fulfillment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-reports-body">
+                            <tr><td colspan="9">Choose a date range and apply filters.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-panel" data-admin-panel="products" hidden>
+                <div class="admin-panel-heading">
+                    <div>
+                        <h2>Product management</h2>
+                        <p class="admin-note">Mark products out of stock to prevent new cart and checkout orders.</p>
+                    </div>
+                    <button type="button" class="admin-button" id="admin-add-product">Add product</button>
+                </div>
+
+                <form id="admin-product-form" class="admin-form" hidden>
+                    <h3 id="admin-product-form-title">Add product</h3>
+                    <div class="admin-form-grid">
+                        <label>Product ID
+                            <input type="text" name="id" id="admin-product-id" maxlength="64" pattern="[a-z0-9][a-z0-9-]*" required>
+                        </label>
+                        <label>Name
+                            <input type="text" name="name" minlength="2" maxlength="160" required>
+                        </label>
+                        <label>Price (PHP)
+                            <input type="number" name="price" min="0" max="99999999.99" step="0.01" required>
+                        </label>
+                        <label>Category
+                            <input type="text" name="category" maxlength="40" pattern="[a-z0-9-]+" placeholder="graphic" required>
+                        </label>
+                        <label>Badge
+                            <select name="status">
+                                <option value="">None</option>
+                                <option value="new">New</option>
+                                <option value="popular">Popular</option>
+                                <option value="sale">Sale</option>
+                            </select>
+                        </label>
+                        <label>Stock
+                            <select name="stockStatus">
+                                <option value="in_stock">In stock</option>
+                                <option value="out_of_stock">Out of stock</option>
+                            </select>
+                        </label>
+                        <label class="admin-form-wide">Image path
+                            <input type="text" name="image" maxlength="255" placeholder="img/products/uaa-1.jpg" required>
+                        </label>
+                        <label class="admin-form-wide">Description
+                            <textarea name="description" rows="3" maxlength="5000"></textarea>
+                        </label>
+                    </div>
+                    <div class="admin-form-actions">
+                        <button type="submit" class="admin-button">Save product</button>
+                        <button type="button" class="admin-button admin-button-secondary" id="admin-cancel-product">Cancel</button>
+                    </div>
+                </form>
+
+                <div class="admin-table-wrap">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-products-body">
+                            <tr><td colspan="5">Loading products…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-panel" data-admin-panel="users" hidden>
+                <h2>User management</h2>
+                <p class="admin-note">Suspending an account blocks sign-in but preserves customer and order history. Administrator roles are managed in Firebase Console.</p>
+                <div class="admin-table-wrap">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Account</th>
+                                <th>Created</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users-body">
+                            <tr><td colspan="6">Loading customers…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="js/shop.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

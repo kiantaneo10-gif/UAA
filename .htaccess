@@ -1,0 +1,9 @@
+Options -Indexes
+
+<Files ".env">
+  Require all denied
+</Files>
+
+<FilesMatch "firebase-service-account.*\.json|.*firebase-adminsdk.*\.json">
+  Require all denied
+</FilesMatch>
