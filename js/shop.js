@@ -454,7 +454,7 @@ import {
    *    payment, items, subtotal, discount, total, message).
    */
   const EMAILJS_PUBLIC_KEY = "oO7F91jSeX8mEcLvL";
-  const EMAILJS_SERVICE_ID = "service_ace06e3";
+  const EMAILJS_SERVICE_ID = "service_q0wya1h";
   const EMAILJS_TEMPLATE_ID = "template_g5f6mzh";
 
   let emailjsReady = false;
